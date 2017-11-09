@@ -1,0 +1,14 @@
+{{node.title}} <button {{action "toggleOpen"}}>Toggle open</button>
+{{#if isOpen}}
+  <ul>
+    {{#each node.children as |node|}}
+      <li>
+        {{mu-tree node=node}}
+      </li>
+    {{/each}}
+  </ul>
+
+  {{input value=newNodeName}}<button {{action "createNode"}}>Create!</button>
+{{/if}}
+
+{{yield}}

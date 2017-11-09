@@ -1,0 +1,11 @@
+<h1>mu-tree</h1>
+
+<ul>
+  {{#each model as |node|}}
+    {{mu-tree node=node}}
+  {{/each}}
+</ul>
+
+{{input value=newNodeName}}<button {{action "createNode"}}>Create!</button>
+
+{{outlet}}
