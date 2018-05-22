@@ -3,6 +3,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   isOpen: false,
   store: Ember.inject.service(),
+  init() {
+    this._super(...arguments);
+    this.set('rand', Math.random());
+  },
   actions: {
     toggleOpen() {
       this.toggleProperty('isOpen');
@@ -18,6 +22,10 @@ export default Ember.Component.extend({
         this.send('refreshModel');
         alert(`Created record ${record.get('name')}`);
       } );
+    },
+    sortEndAction(sortEvent) {
+      console.log('done sorting');
+      console.log(sortEvent);
     }
   }
 });

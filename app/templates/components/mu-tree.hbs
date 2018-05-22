@@ -1,11 +1,15 @@
 {{node.title}} <button {{action "toggleOpen"}}>Toggle open</button>
 {{#if isOpen}}
   <ul>
-    {{#each node.children as |node|}}
-      <li>
-        {{mu-tree node=node}}
-      </li>
-    {{/each}}
+    {{#sortable-objects sortableObjectList=node.children sortEndAction='sortEndAction' enableSort=true useSwap=true inPlace=false sortingScope="mu-tree-sort"}}
+      {{#each node.children as |node|}}
+        {{#draggable-object content=node isSortable=true sortingScope="mu-tree-sort"}}
+          <li>
+            {{mu-tree node=node}}
+          </li>
+        {{/draggable-object}}
+      {{/each}}
+    {{/sortable-objects}}
   </ul>
 
   {{input value=newNodeName}}<button {{action "createNode"}}>Create!</button>

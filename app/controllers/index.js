@@ -7,9 +7,13 @@ export default Ember.Controller.extend({
         title: this.get('newNodeName')
       });
       this.set('newNodeName', '');
-      record.save().then( (item) => {
+      record.save().then( () => {
         this.send('refreshModel');
       } );
+    },
+    sortEndAction(newSortedArray) {
+      console.log('Done sorting');
+      console.log(newSortedArray);
     }
   }
 });

@@ -1,9 +1,15 @@
 <h1>mu-tree</h1>
 
 <ul>
-  {{#each model as |node|}}
-    {{mu-tree node=node}}
-  {{/each}}
+  {{#sortable-objects sortableObjectList=model sortEndAction='sortEndAction' enableSort=true useSwap=true inPlace=false sortingScope="mu-tree-sort"}}
+    {{#each model as |node|}}
+      {{#draggable-object content=node isSortable=true sortingScope="mu-tree-sort"}}
+        <li>
+          {{mu-tree node=node}}
+        </li>
+      {{/draggable-object}}
+    {{/each}}
+  {{/sortable-objects}}
 </ul>
 
 {{input value=newNodeName}}<button {{action "createNode"}}>Create!</button>
