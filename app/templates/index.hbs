@@ -5,6 +5,7 @@
     {{#each model as |node|}}
       {{#draggable-object content=node isSortable=true sortingScope="mu-tree-sort"}}
         <li>
+          {{input checked=node.done type="checkbox" type="checkbox" onclick=(action "saveDone" node)}}
           {{mu-tree node=node}}
         </li>
       {{/draggable-object}}
